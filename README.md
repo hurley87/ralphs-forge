@@ -1,4 +1,4 @@
-# Ralph's Forge
+# Ralph's Miniapp
 
 **The ultimate full-stack starter kit for Farcaster Mini Apps.**
 
