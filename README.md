@@ -55,8 +55,37 @@ Run these from the root directory:
 | `npm run forge:build` | Compiles your smart contracts. |
 | `npm run forge:test` | Runs Foundry tests for your contracts. |
 | `npm run forge:deploy` | Deploys contracts and syncs ABIs to the frontend. |
+| `npm run ralph` | Runs the autonomous development loop (see below). |
 
 **Note**: Check `package.json` to configure the deployment script specific to your chain.
+
+## Ralph: Autonomous Development Loop
+
+Ralph is an autonomous coding agent powered by Claude. It works through a generated implementation plan, writing code, running tests, and committing changes without human intervention.
+
+### How It Works
+
+1. **Generate a Plan**: Use the `/blueprint` slash command in Claude Code to create an implementation plan.
+   ```bash
+   /blueprint Add a voting contract with a frontend UI
+   ```
+   This creates a task checklist in `ralph/IMPLEMENTATION_PLAN.md`.
+
+2. **Run Ralph**: Execute the autonomous loop.
+   ```bash
+   npm run ralph        # Default: 10 iterations
+   npm run ralph 20     # Custom: 20 iterations
+   ```
+
+Ralph will:
+- Pick the next unchecked task from the plan
+- Write the code and run verification (`forge test` or `npm run lint`)
+- Mark the task complete and commit
+- Exit and restart for the next task
+
+### Key Principle: Contracts First
+
+Ralph enforces a strict ordering: **all smart contract tasks must complete before frontend tasks begin**. This ensures ABIs exist before the frontend tries to import them.
 
 ## Tribute & Credits
 
