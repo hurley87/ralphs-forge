@@ -1,4 +1,5 @@
 import { env } from "@/lib/env";
+import { buildCacheKey, cacheGetOrSet, CacheTTL } from "@/lib/cache";
 
 export interface NeynarUser {
   fid: string;
@@ -9,7 +10,7 @@ export interface NeynarUser {
   verifications: string[];
 }
 
-export const fetchUser = async (fid: string): Promise<NeynarUser> => {
+async function fetchUserFromNeynar(fid: string): Promise<NeynarUser> {
   const response = await fetch(
     `https://api.neynar.com/v2/farcaster/user/bulk?fids=${fid}`,
     {
@@ -27,4 +28,13 @@ export const fetchUser = async (fid: string): Promise<NeynarUser> => {
   }
   const data = await response.json();
   return data.users[0];
+}
+
+export const fetchUser = async (fid: string): Promise<NeynarUser> => {
+  const cacheKey = buildCacheKey("neynar:user", fid);
+  return cacheGetOrSet(cacheKey, () => fetchUserFromNeynar(fid), CacheTTL.MEDIUM);
+};
+
+export const fetchUserFresh = async (fid: string): Promise<NeynarUser> => {
+  return fetchUserFromNeynar(fid);
 };
