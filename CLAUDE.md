@@ -48,7 +48,25 @@ Farcaster Mini Apps require a publicly accessible URL. Guide the user to:
 ```bash
 pnpm run dev
 ```
-The app will be available at http://localhost:3000 (and via the Cloudflare tunnel URL for Farcaster testing).
+The app will be available at http://localhost:3000.
+
+To test as a Farcaster Mini App, open the preview URL in your browser:
+```
+https://farcaster.xyz/~/developers/mini-apps/preview?url=YOUR_CLOUDFLARE_URL
+```
+Replace `YOUR_CLOUDFLARE_URL` with the tunnel URL from step 6 (e.g., `https://xxx-xxx-xxx.trycloudflare.com`).
+
+### 8. Create Your PRD
+Now that the starter app is running, define what you want to build:
+1. Open `ralph/PRD.md`
+2. Write your product requirements with user stories and acceptance criteria
+3. Use Claude plan mode to generate an implementation plan:
+   ```
+   /blueprint [describe your feature]
+   ```
+4. Run `pnpm run ralph` to start the autonomous development loop
+
+See the README for more details on the Ralph workflow.
 
 ## Commands
 
