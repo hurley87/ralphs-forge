@@ -8,8 +8,8 @@ This repository combines a production-ready Next.js frontend with a robust Found
 
 ### 1. Clone and Install
 ```bash
-git clone https://github.com/hurley87/builders-forge.git
-cd builders-forge
+git clone https://github.com/hurley87/ralphs-forge.git
+cd ralphs-forge
 
 # Install Frontend dependencies
 npm install
@@ -109,10 +109,11 @@ Ralph enforces a strict ordering: **all smart contract tasks must complete befor
 
 ## Tribute & Credits
 
-Builder's Forge stands on the shoulders of giants. It is a remix of two incredible open-source projects:
+Builder's Forge stands on the shoulders of giants. It is a remix of these open-source projects:
 
 - **Frontend**: [Farcaster Mini App Starter](https://github.com/builders-garden/miniapp-starter) by Builders Garden.
 - **Smart Contracts**: [LazerForge](https://github.com/lazertechnologies/lazerforge) by Lazer Technologies.
+- **Ralph**: [How to Ralph Wiggum](https://github.com/ghuntley/how-to-ralph-wiggum) by Geoffrey Huntley.
 
 Please support the original creators by starring their repositories!
 
